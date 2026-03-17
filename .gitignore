@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+site/node_modules/
+mcp-ftp/node_modules/
+
+# Next.js build
+site/.next/
+site/out/
+
+# Debug
+npm-debug.log*
+
+# Local env
+.env*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude local config
+.claude/

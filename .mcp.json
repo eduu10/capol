@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "capol-ftp": {
+      "command": "node",
+      "args": ["C:/Users/eduu1/Downloads/capol/mcp-ftp/server.mjs"],
+      "type": "stdio"
+    }
+  }
+}
