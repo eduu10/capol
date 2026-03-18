@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { assetPath } from '@/lib/utils';
 import { categories } from '@/data/products';
 
 const navLinks = [
@@ -127,7 +128,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/imagens/logos/logo-capol.png"
+            src={assetPath("/imagens/logos/logo-capol.png")}
             alt="Capol - Cooperativa Agropecuária de Oliveira"
             width={160}
             height={50}

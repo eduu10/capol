@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog';
+import { assetPath } from '@/lib/utils';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -59,7 +60,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* Banner Image */}
       <div className="relative w-full h-64 md:h-96 bg-gray-200">
         <Image
-          src={post.image}
+          src={assetPath(post.image)}
           alt={post.title}
           fill
           className="object-cover"
@@ -132,7 +133,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 >
                   <div className="relative w-32 h-32 flex-shrink-0 bg-gray-200">
                     <Image
-                      src={otherPost.thumbnail}
+                      src={assetPath(otherPost.thumbnail)}
                       alt={otherPost.title}
                       fill
                       className="object-cover"

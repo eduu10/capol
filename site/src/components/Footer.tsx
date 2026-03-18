@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { assetPath } from '@/lib/utils';
 
 const galleryThumbnails = [
   { src: '/imagens/galeria-capas/capol-oliveira.jpg', alt: 'Capol Oliveira' },
@@ -82,7 +83,7 @@ export default function Footer() {
                 {galleryThumbnails.map((thumb) => (
                   <Link key={thumb.src} href="/galerias" className="gallery-item block overflow-hidden rounded">
                     <Image
-                      src={thumb.src}
+                      src={assetPath(thumb.src)}
                       alt={thumb.alt}
                       width={120}
                       height={90}

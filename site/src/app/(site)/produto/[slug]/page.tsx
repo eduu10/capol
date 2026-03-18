@@ -7,6 +7,7 @@ import {
   getProductBySlug,
   getProductsByCategory,
 } from '@/data/products';
+import { assetPath } from '@/lib/utils';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -74,7 +75,7 @@ export default async function ProdutoPage({ params }: PageProps) {
             <div className="lg:w-1/2">
               <div className="relative aspect-square bg-gray-100">
                 <Image
-                  src={product.image}
+                  src={assetPath(product.image)}
                   alt={product.name}
                   fill
                   className="object-cover"
@@ -245,7 +246,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                 >
                   <div className="relative aspect-square bg-gray-100">
                     <Image
-                      src={related.image}
+                      src={assetPath(related.image)}
                       alt={related.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"

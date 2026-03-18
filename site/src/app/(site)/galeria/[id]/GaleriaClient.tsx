@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { assetPath } from '@/lib/utils';
 import type { Gallery } from '@/data/galleries';
 
 interface GaleriaClientProps {
@@ -80,7 +81,7 @@ export default function GaleriaClient({ gallery }: GaleriaClientProps) {
               className="gallery-item relative aspect-[4/3] bg-gray-100 rounded-xl overflow-hidden cursor-pointer group"
             >
               <Image
-                src={image}
+                src={assetPath(image)}
                 alt={`${gallery.name} - Foto ${index + 1}`}
                 fill
                 className="object-cover"
@@ -161,7 +162,7 @@ export default function GaleriaClient({ gallery }: GaleriaClientProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={gallery.images[lightboxIndex]}
+              src={assetPath(gallery.images[lightboxIndex])}
               alt={`${gallery.name} - Foto ${lightboxIndex + 1}`}
               fill
               className="object-contain"

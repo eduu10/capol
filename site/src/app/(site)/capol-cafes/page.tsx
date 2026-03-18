@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { assetPath } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Capol Cafés - CAPOL | Cafés Especiais de Oliveira',
@@ -84,7 +85,7 @@ export default function CapolCafes() {
       {/* Hero Banner */}
       <section className="relative h-[400px] md:h-[500px]">
         <Image
-          src="/imagens/cafes/qualidade-e-compromisso-min.jpg"
+          src={assetPath("/imagens/cafes/qualidade-e-compromisso-min.jpg")}
           alt="Capol Cafés - Qualidade e Compromisso"
           fill
           className="object-cover"
@@ -131,7 +132,7 @@ export default function CapolCafes() {
             </div>
             <div className="relative h-72 rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/imagens/cafes/qualidade-e-compromisso-2-min.jpg"
+                src={assetPath("/imagens/cafes/qualidade-e-compromisso-2-min.jpg")}
                 alt="Café CAPOL - Grãos de qualidade"
                 fill
                 className="object-cover"

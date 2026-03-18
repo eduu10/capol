@@ -7,6 +7,7 @@ import {
   getCategoryBySlug,
   getProductsByCategory,
 } from '@/data/products';
+import { assetPath } from '@/lib/utils';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -138,7 +139,7 @@ export default async function CategoriaPage({ params }: PageProps) {
                   {/* Product Image */}
                   <div className="relative w-full aspect-[3/4] mb-4 bg-white">
                     <Image
-                      src={product.image}
+                      src={assetPath(product.image)}
                       alt={product.name}
                       fill
                       className="object-contain group-hover:scale-105 transition-transform duration-300"

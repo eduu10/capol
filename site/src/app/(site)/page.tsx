@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import BannerSlider from '@/components/BannerSlider';
+import { assetPath } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'CAPOL - Cooperativa Agropecuária de Oliveira',
@@ -60,7 +61,7 @@ export default function Home() {
                 {/* Card image with label overlay */}
                 <div className="relative h-[220px] overflow-hidden">
                   <Image
-                    src={card.thumb}
+                    src={assetPath(card.thumb)}
                     alt={card.title}
                     fill
                     className="object-cover"
@@ -119,7 +120,7 @@ export default function Home() {
           <Link href="/capol-cafes" className="group block relative">
             <div className="relative h-[300px] md:h-[400px] overflow-hidden">
               <Image
-                src="/imagens/banners/banner_capol_cafes.jpg"
+                src={assetPath("/imagens/banners/banner_capol_cafes.jpg")}
                 alt="Capol Cafés"
                 fill
                 className="object-cover"
@@ -167,7 +168,7 @@ export default function Home() {
               >
                 <div className="relative w-[150px] h-[150px] md:w-[180px] md:h-[180px] rounded-full overflow-hidden mb-4">
                   <Image
-                    src={seg.img}
+                    src={assetPath(seg.img)}
                     alt={seg.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -214,7 +215,7 @@ export default function Home() {
             {/* Right: image */}
             <div className="relative h-[300px] md:h-[380px] overflow-hidden">
               <Image
-                src="/imagens/home-centro/banner-nutricao-animal.jpg"
+                src={assetPath("/imagens/home-centro/banner-nutricao-animal.jpg")}
                 alt="Nutrição Animal CAPOL"
                 fill
                 className="object-cover"
@@ -252,7 +253,7 @@ export default function Home() {
             {/* Right: image */}
             <div className="relative h-[300px] md:h-[380px] overflow-hidden">
               <Image
-                src="/imagens/home-centro/banner-racao-balanceada.jpg"
+                src={assetPath("/imagens/home-centro/banner-racao-balanceada.jpg")}
                 alt="Ração Balanceada CAPOL"
                 fill
                 className="object-cover"

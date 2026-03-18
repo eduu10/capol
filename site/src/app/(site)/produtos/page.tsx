@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { assetPath } from '@/lib/utils';
 import { products, categories } from '@/data/products';
 
 const PRODUCTS_PER_PAGE = 12;
@@ -121,7 +122,7 @@ export default function ProdutosPage() {
                   {/* Product Image */}
                   <div className="relative w-full aspect-[3/4] mb-4 bg-white">
                     <Image
-                      src={product.image}
+                      src={assetPath(product.image)}
                       alt={product.name}
                       fill
                       className="object-contain group-hover:scale-105 transition-transform duration-300"

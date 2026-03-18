@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import { assetPath } from '@/lib/utils';
 
 const banners = [
   {
@@ -52,7 +53,7 @@ export default function BannerSlider() {
           <div key={index} className="slider-slide relative min-w-full">
             <div className="relative h-[300px] w-full sm:h-[400px] md:h-[500px] lg:h-[600px]">
               <Image
-                src={banner.src}
+                src={assetPath(banner.src)}
                 alt={banner.alt}
                 fill
                 className="object-cover"

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { galleries } from '@/data/galleries';
+import { assetPath } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Galerias | Capol',
@@ -36,7 +37,7 @@ export default function GaleriasPage() {
             >
               <div className="relative aspect-[4/3] bg-gray-100">
                 <Image
-                  src={gallery.cover}
+                  src={assetPath(gallery.cover)}
                   alt={gallery.name}
                   fill
                   className="object-cover"

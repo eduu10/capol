@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { blogPosts } from '@/data/blog';
+import { assetPath } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Blog | Capol',
@@ -36,7 +37,7 @@ export default function BlogPage() {
             >
               <div className="relative aspect-[16/9] bg-gray-100">
                 <Image
-                  src={post.thumbnail}
+                  src={assetPath(post.thumbnail)}
                   alt={post.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
