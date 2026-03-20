@@ -74,7 +74,7 @@ export default async function ProdutoPage({ params }: PageProps) {
           <div className="lg:flex">
             {/* Product Image */}
             <div className="lg:w-1/2">
-              <div className="relative aspect-square bg-gray-100">
+              <div className="relative aspect-square bg-white">
                 <Image
                   src={assetPath(product.image)}
                   alt={product.name}
@@ -227,7 +227,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                   href={`/produto/${related.slug}`}
                   className="product-card bg-white rounded-xl shadow-sm overflow-hidden group"
                 >
-                  <div className="relative aspect-square bg-gray-100">
+                  <div className="relative aspect-square bg-white">
                     <Image
                       src={assetPath(related.image)}
                       alt={related.name}
