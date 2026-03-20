@@ -85,15 +85,30 @@ export default function Header() {
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let lastDirection: 'up' | 'down' = 'up';
+    let accumulated = 0;
+
     const handleScroll = () => {
       const currentY = window.scrollY;
-      setIsScrolled(currentY > 0);
-      if (currentY > 80 && currentY > lastScrollY) {
-        setIsCompact(true);
-      } else if (currentY < lastScrollY) {
-        setIsCompact(false);
-      }
+      const delta = currentY - lastScrollY;
       lastScrollY = currentY;
+
+      setIsScrolled(currentY > 0);
+
+      const direction = delta > 0 ? 'down' : 'up';
+      if (direction !== lastDirection) {
+        accumulated = 0;
+        lastDirection = direction;
+      }
+      accumulated += Math.abs(delta);
+
+      if (accumulated > 60) {
+        if (direction === 'down' && currentY > 100) {
+          setIsCompact(true);
+        } else if (direction === 'up') {
+          setIsCompact(false);
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
