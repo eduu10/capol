@@ -79,12 +79,21 @@ export default function Header() {
   const [productsSubmenuOpen, setProductsSubmenuOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
   const submenuRef = useRef<HTMLLIElement>(null);
   const submenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 0);
+      if (currentY > 80 && currentY > lastScrollY) {
+        setIsCompact(true);
+      } else if (currentY < lastScrollY) {
+        setIsCompact(false);
+      }
+      lastScrollY = currentY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -124,7 +133,9 @@ export default function Header() {
       }`}
       style={{ borderBottom: '1px solid #e5e7eb' }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
+      <div className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-300 ${
+        isCompact ? 'py-1 lg:py-2' : 'py-2'
+      }`}>
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
@@ -132,7 +143,9 @@ export default function Header() {
             alt="Capol - Cooperativa Agropecuária de Oliveira"
             width={160}
             height={50}
-            className="h-12 w-auto md:h-14"
+            className={`w-auto transition-all duration-300 ${
+              isCompact ? 'h-8 lg:h-14' : 'h-12 md:h-14'
+            }`}
             priority
           />
         </Link>
