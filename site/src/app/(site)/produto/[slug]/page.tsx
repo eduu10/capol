@@ -8,6 +8,7 @@ import {
   getProductsByCategory,
 } from '@/data/products';
 import { assetPath } from '@/lib/utils';
+import WhatsAppModal from '@/components/WhatsAppModal';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -166,25 +167,7 @@ export default async function ProdutoPage({ params }: PageProps) {
               )}
 
               {/* CTA Button */}
-              <Link
-                href="/carrinho"
-                className="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-[#2e7d32] text-white font-semibold rounded-xl hover:bg-[#1b5e20] transition-colors shadow-lg hover:shadow-xl"
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"
-                  />
-                </svg>
-                Solicitar Orcamento
-              </Link>
+              <WhatsAppModal productName={product.name} />
             </div>
           </div>
         </div>
