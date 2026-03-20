@@ -18,6 +18,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/capol/favicon.png',
+  },
   title: 'Cooperativa Agropecuária de Oliveira | Capol',
   description:
     'A Capol é uma cooperativa agropecuária fundada em 1963 em Oliveira, MG. Oferecemos rações, suplementos minerais, insumos agrícolas, assistência técnica e benefícios exclusivos para cooperados.',
