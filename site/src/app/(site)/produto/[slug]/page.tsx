@@ -79,7 +79,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                   src={assetPath(product.image)}
                   alt={product.name}
                   fill
-                  className="object-cover"
+                  className="object-contain p-4"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
@@ -232,7 +232,7 @@ export default async function ProdutoPage({ params }: PageProps) {
                       src={assetPath(related.image)}
                       alt={related.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   </div>
