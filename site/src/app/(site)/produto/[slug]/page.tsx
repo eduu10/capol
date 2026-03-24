@@ -169,7 +169,7 @@ export default async function ProdutoPage({ params }: PageProps) {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
-                <WhatsAppModal productName={product.name} />
+                <WhatsAppModal productName={product.name} productSlug={product.slug} />
                 <AddToCartButton slug={product.slug} name={product.name} image={product.image} />
               </div>
             </div>

@@ -22,9 +22,11 @@ const contacts = [
 
 interface WhatsAppModalProps {
   productName: string;
+  productSlug?: string;
 }
 
-export default function WhatsAppModal({ productName }: WhatsAppModalProps) {
+export default function WhatsAppModal({ productName, productSlug }: WhatsAppModalProps) {
+  const productUrl = productSlug ? `\nhttps://eduu10.github.io/capol/produto/${productSlug}` : '';
   const [open, setOpen] = useState(false);
 
   return (
@@ -80,7 +82,7 @@ export default function WhatsAppModal({ productName }: WhatsAppModalProps) {
               <div className="flex flex-col gap-4">
                 {contacts.map((contact) => {
                   const message = encodeURIComponent(
-                    `${contact.greeting} *${productName}* no site da Capol. Poderia me passar mais informações e valores?`
+                    `${contact.greeting} *Capol ${productName}* no site da Capol. Poderia me passar mais informações e valores?${productUrl}`
                   );
                   return (
                     <a

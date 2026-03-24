@@ -30,10 +30,12 @@ export default function CartFloat() {
 
   if (totalItems === 0) return null;
 
+  const siteUrl = 'https://eduu10.github.io/capol';
+
   const buildMessage = (greeting: string) => {
     const productList = items
-      .map((item) => `• *${item.name}* (${item.quantity}x)`)
-      .join('\n');
+      .map((item) => `• *Capol ${item.name}* (${item.quantity}x)\n  ${siteUrl}/produto/${item.slug}`)
+      .join('\n\n');
     return encodeURIComponent(
       `${greeting} Gostaria de solicitar um orçamento dos seguintes produtos:\n\n${productList}\n\nAguardo retorno!`
     );
