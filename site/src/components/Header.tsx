@@ -149,7 +149,7 @@ export default function Header() {
       style={{ borderBottom: '1px solid #e5e7eb' }}
     >
       <div className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-300 ${
-        isCompact ? 'py-1 lg:py-2' : 'py-2'
+        isCompact ? 'py-1' : 'py-2'
       }`}>
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
@@ -159,7 +159,7 @@ export default function Header() {
             width={160}
             height={50}
             className={`w-auto transition-all duration-300 ${
-              isCompact ? 'h-8 lg:h-14' : 'h-12 md:h-14'
+              isCompact ? 'h-8 md:h-9' : 'h-12 md:h-14'
             }`}
             priority
           />

@@ -72,7 +72,7 @@ export default function WhatsAppFloat() {
             rel="noopener noreferrer"
             className={`flex items-center rounded-l-full bg-[#25d366] text-white shadow-lg hover:-translate-x-1 ${
               collapsed
-                ? 'gap-0 py-2 pl-3 pr-3 md:gap-3 md:py-3 md:pl-5 md:pr-6'
+                ? 'gap-0 py-2 pl-3 pr-3'
                 : 'gap-3 py-3 pl-5 pr-6'
             }`}
             style={{
@@ -86,7 +86,7 @@ export default function WhatsAppFloat() {
             <span
               className={`text-sm font-bold whitespace-nowrap overflow-hidden ${
                 collapsed
-                  ? 'w-0 opacity-0 md:w-auto md:opacity-100'
+                  ? 'w-0 opacity-0'
                   : 'w-auto opacity-100'
               }`}
               style={{
