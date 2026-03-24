@@ -150,7 +150,7 @@ export default function Home() {
         >
           {heroSlides.map((slide, index) => (
             <div key={index} className="relative min-w-full">
-              <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+              <div className="relative aspect-[16/9] sm:aspect-auto sm:h-[400px] md:h-[500px] lg:h-[600px]">
                 <Image
                   src={assetPath(slide.bg)}
                   alt={slide.highlight}
