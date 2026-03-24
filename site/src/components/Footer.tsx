@@ -22,7 +22,6 @@ export default function Footer() {
             <div>
               <h3
                 className="mb-1 text-lg font-bold text-gray-800 uppercase"
-                style={{ fontFamily: 'Raleway, sans-serif' }}
               >
                 Horário de Funcionamento
               </h3>
@@ -50,7 +49,6 @@ export default function Footer() {
             <div>
               <h3
                 className="mb-1 text-lg font-bold text-gray-800 uppercase"
-                style={{ fontFamily: 'Raleway, sans-serif' }}
               >
                 Contato
               </h3>
@@ -74,7 +72,6 @@ export default function Footer() {
             <div>
               <h3
                 className="mb-1 text-lg font-bold text-gray-800 uppercase"
-                style={{ fontFamily: 'Raleway, sans-serif' }}
               >
                 Galerias
               </h3>
@@ -103,7 +100,6 @@ export default function Footer() {
           {/* Instagram */}
           <h3
             className="text-xl font-bold uppercase tracking-widest mb-2"
-            style={{ fontFamily: 'Raleway, sans-serif' }}
           >
             Instagram
           </h3>
@@ -116,7 +112,6 @@ export default function Footer() {
 
           <p
             className="text-2xl font-bold uppercase tracking-wide mb-4"
-            style={{ fontFamily: 'Raleway, sans-serif' }}
           >
             Como podemos ajudá-lo?
           </p>

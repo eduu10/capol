@@ -70,7 +70,7 @@ export default function HomeAntiga() {
                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                     <span
                       className="text-white text-xl md:text-2xl font-bold uppercase"
-                      style={{ letterSpacing: '0.3em', fontFamily: 'Raleway, sans-serif' }}
+                      style={{ letterSpacing: '0.3em' }}
                     >
                       {card.label}
                     </span>
@@ -80,14 +80,12 @@ export default function HomeAntiga() {
                 <div className="pt-5 pb-2">
                   <h3
                     className="text-[#333] text-base font-bold uppercase mb-2"
-                    style={{ fontFamily: 'Raleway, sans-serif' }}
-                  >
+                                     >
                     {card.title}
                   </h3>
                   <p
                     className="text-[#666] text-sm leading-relaxed"
-                    style={{ fontFamily: 'Lato, sans-serif' }}
-                  >
+                                     >
                     {card.text}
                   </p>
                 </div>
@@ -104,14 +102,12 @@ export default function HomeAntiga() {
           <div className="text-center mb-10">
             <h2
               className="text-2xl md:text-3xl font-bold text-[#333] uppercase mb-2"
-              style={{ fontFamily: 'Raleway, sans-serif' }}
-            >
+                         >
               Paixão, qualidade e amor
             </h2>
             <p
               className="text-[#666] text-base"
-              style={{ fontFamily: 'Lato, sans-serif' }}
-            >
+                         >
               Com a CAPOL, você se une a uma comunidade apaixonada pela cultura cafeeira!
             </p>
           </div>
@@ -129,14 +125,13 @@ export default function HomeAntiga() {
               <div className="absolute inset-0 bg-[#2e7d32]/60 flex flex-col items-center justify-center text-center px-4">
                 <h3
                   className="text-white text-2xl md:text-4xl font-bold uppercase mb-4"
-                  style={{ letterSpacing: '0.1em', fontFamily: 'Raleway, sans-serif' }}
+                  style={{ letterSpacing: '0.1em' }}
                 >
                   CONHEÇA TUDO SOBRE A CAPOL CAFÉS
                 </h3>
                 <span
                   className="inline-block border-2 border-white text-white uppercase text-sm font-bold px-8 py-3 tracking-wider group-hover:bg-white group-hover:text-[#2e7d32] transition-colors"
-                  style={{ fontFamily: 'Raleway, sans-serif' }}
-                >
+                                 >
                   CLIQUE AQUI
                 </span>
               </div>
@@ -150,8 +145,7 @@ export default function HomeAntiga() {
         <div className="mx-auto max-w-[1140px] px-4 text-center">
           <h2
             className="text-2xl md:text-3xl font-bold text-[#333] uppercase mb-3"
-            style={{ fontFamily: 'Raleway, sans-serif' }}
-          >
+                     >
             RAÇÕES ESPECIAIS PARA
           </h2>
           {/* Green underline */}
@@ -177,8 +171,7 @@ export default function HomeAntiga() {
                 </div>
                 <span
                   className="text-[#333] text-base font-bold uppercase"
-                  style={{ fontFamily: 'Raleway, sans-serif' }}
-                >
+                                 >
                   {seg.name}
                 </span>
               </Link>
@@ -195,16 +188,14 @@ export default function HomeAntiga() {
             <div>
               <h2
                 className="text-2xl md:text-3xl font-bold text-[#333] uppercase mb-3"
-                style={{ fontFamily: 'Raleway, sans-serif' }}
-              >
+                             >
                 NUTRIÇÃO ANIMAL
               </h2>
               {/* Green underline */}
               <span className="block w-[50px] h-[3px] bg-[#2e7d32] mb-6" />
               <p
                 className="text-[#666] text-base leading-relaxed"
-                style={{ fontFamily: 'Lato, sans-serif' }}
-              >
+                             >
                 A nutrição animal é definida pelo conjunto de processos em que um
                 organismo vivo digere ou assimila os nutrientes contidos nos
                 alimentos, usando-os para seu crescimento, reposição ou reparação
@@ -234,16 +225,14 @@ export default function HomeAntiga() {
             <div>
               <h2
                 className="text-2xl md:text-3xl font-bold text-[#333] uppercase mb-3"
-                style={{ fontFamily: 'Raleway, sans-serif' }}
-              >
+                             >
                 RAÇÃO BALANCEADA
               </h2>
               {/* Green underline */}
               <span className="block w-[50px] h-[3px] bg-[#2e7d32] mb-6" />
               <p
                 className="text-[#666] text-base leading-relaxed"
-                style={{ fontFamily: 'Lato, sans-serif' }}
-              >
+                             >
                 O avanço das tecnologias ligadas ao melhoramento genético e ao
                 manejo resultam em aumento da capacidade produtiva dos animais, em
                 razão disso a simples oferta de forragem não é mais capaz de

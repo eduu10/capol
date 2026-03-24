@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Raleway, Lato } from 'next/font/google';
+import { Raleway, Lato, Crete_Round } from 'next/font/google';
 import './globals.css';
 import { SiteConfigProvider } from '@/contexts/SiteConfigContext';
 
@@ -7,7 +7,7 @@ const raleway = Raleway({
   subsets: ['latin'],
   variable: '--font-raleway',
   display: 'swap',
-  weight: ['400', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 const lato = Lato({
@@ -15,6 +15,15 @@ const lato = Lato({
   variable: '--font-lato',
   display: 'swap',
   weight: ['300', '400', '700'],
+  style: ['normal', 'italic'],
+});
+
+const creteRound = Crete_Round({
+  subsets: ['latin'],
+  variable: '--font-crete',
+  display: 'swap',
+  weight: '400',
+  style: ['normal', 'italic'],
 });
 
 export const metadata: Metadata = {
@@ -50,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${raleway.variable} ${lato.variable} font-sans antialiased`}>
+      <body className={`${raleway.variable} ${lato.variable} ${creteRound.variable} font-body antialiased`}>
         <SiteConfigProvider>
           {children}
         </SiteConfigProvider>

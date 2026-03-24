@@ -181,7 +181,6 @@ export default function Header() {
                     type="button"
                     onClick={() => setProductsSubmenuOpen(!productsSubmenuOpen)}
                     className="flex flex-col items-center gap-1 px-4 py-2 text-[13px] font-semibold tracking-wide text-gray-600 transition-colors hover:text-green-700"
-                    style={{ fontFamily: 'Raleway, sans-serif' }}
                     aria-expanded={productsSubmenuOpen}
                     aria-haspopup="true"
                   >
@@ -238,7 +237,6 @@ export default function Header() {
                   <Link
                     href={link.href}
                     className="flex flex-col items-center gap-1 px-4 py-2 text-[13px] font-semibold tracking-wide text-gray-600 transition-colors hover:text-green-700"
-                    style={{ fontFamily: 'Raleway, sans-serif' }}
                   >
                     <span className="text-gray-500">{link.icon}</span>
                     {link.label}
@@ -300,7 +298,6 @@ export default function Header() {
                     type="button"
                     onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
                     className="flex w-full items-center justify-between py-3 text-sm font-semibold text-gray-700"
-                    style={{ fontFamily: 'Raleway, sans-serif' }}
                   >
                     <span className="flex items-center gap-2">
                       <span className="text-gray-500">{link.icon}</span>
@@ -353,7 +350,6 @@ export default function Header() {
                   <Link
                     href={link.href}
                     className="flex items-center gap-2 py-3 text-sm font-semibold text-gray-700"
-                    style={{ fontFamily: 'Raleway, sans-serif' }}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <span className="text-gray-500">{link.icon}</span>

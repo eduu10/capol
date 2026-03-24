@@ -32,7 +32,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-raleway)', 'var(--font-lato)', 'system-ui', '-apple-system', 'sans-serif'],
+        body: ['var(--font-lato)', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['var(--font-raleway)', 'system-ui', '-apple-system', 'sans-serif'],
+        crete: ['var(--font-crete)', 'Georgia', 'serif'],
+        sans: ['var(--font-lato)', 'system-ui', '-apple-system', 'sans-serif'],
       },
     },
   },

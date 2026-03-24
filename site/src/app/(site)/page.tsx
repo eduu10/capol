@@ -236,10 +236,10 @@ export default function Home() {
                       Admin
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-[#1a1a2e] mb-2 group-hover:text-[#2e7d32] transition-colors" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                  <h3 className="text-lg font-bold text-[#1a1a2e] mb-2 group-hover:text-[#2e7d32] transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-gray-400 text-sm line-clamp-2 mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
+                  <p className="text-gray-400 text-sm line-clamp-2 mb-4">
                     {post.excerpt}
                   </p>
                   <span className="text-[#2e7d32] font-semibold text-sm inline-flex items-center">
@@ -288,10 +288,10 @@ export default function Home() {
             {/* Right: Content */}
             <div>
               <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2 mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2 mb-4">
                 Qualidade e tradição no campo desde 1963
               </h2>
-              <p className="text-gray-500 mb-8" style={{ fontFamily: 'Lato, sans-serif' }}>
+              <p className="text-gray-500 mb-8">
                 A CAPOL é uma cooperativa agropecuária comprometida com o desenvolvimento rural, oferecendo os melhores produtos e serviços para o produtor.
               </p>
               {/* Progress bars */}
@@ -331,7 +331,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nossa Galeria</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2">
               Conheça nossa estrutura
             </h2>
           </div>
@@ -375,7 +375,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-[#2e7d32] mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <div className="text-4xl md:text-5xl font-bold text-[#2e7d32] mb-2">
                   {stat.value}
                 </div>
                 <div className="flex items-center justify-center gap-2 text-gray-500">
@@ -393,7 +393,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nossos Serviços</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2">
               Soluções completas para o produtor rural
             </h2>
           </div>
@@ -409,10 +409,10 @@ export default function Home() {
                     {svc.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#1a1a2e] mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
                       {svc.title}
                     </h3>
-                    <p className="text-gray-500 text-sm mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
+                    <p className="text-gray-500 text-sm mb-4">
                       {svc.desc}
                     </p>
                     <span className="text-[#2e7d32] font-semibold text-sm inline-flex items-center">
@@ -441,10 +441,10 @@ export default function Home() {
             {/* Left: Text */}
             <div>
               <span className="text-[#4caf50] font-semibold text-sm uppercase tracking-wider">Quem Somos</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
                 Tradição e inovação na agropecuária mineira
               </h2>
-              <p className="text-white/70 mb-6" style={{ fontFamily: 'Lato, sans-serif' }}>
+              <p className="text-white/70 mb-6">
                 A CAPOL - Cooperativa Agropecuária de Oliveira foi fundada em 1963 com o objetivo de fortalecer o produtor rural da região. Hoje, somos referência em nutrição animal e cafés especiais.
               </p>
               <div className="space-y-4">
@@ -474,7 +474,7 @@ export default function Home() {
             </div>
             {/* Right: Contact Form */}
             <div className="bg-white rounded-3xl p-8 shadow-2xl">
-              <h3 className="text-2xl font-bold text-[#1a1a2e] mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <h3 className="text-2xl font-bold text-[#1a1a2e] mb-6">
                 Entre em contato
               </h3>
               <form className="space-y-4">
@@ -527,7 +527,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
             <div>
               <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nossos Produtos</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2">
                 Rações de qualidade do campo à mesa
               </h2>
             </div>
@@ -564,7 +564,7 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#1a1a2e] mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h3 className="font-bold text-[#1a1a2e] mb-1">
                       {product.name}
                     </h3>
                     <p className="text-gray-400 text-xs mb-3">
@@ -636,10 +636,10 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Inscreva-se em nossa newsletter
           </h2>
-          <p className="text-white/70 mb-8 max-w-md mx-auto" style={{ fontFamily: 'Lato, sans-serif' }}>
+          <p className="text-white/70 mb-8 max-w-md mx-auto">
             Receba novidades, dicas e informações sobre nossos produtos diretamente no seu e-mail.
           </p>
           <div className="flex max-w-md mx-auto">

@@ -76,7 +76,7 @@ export default function WhatsAppFloat() {
                 : 'gap-3 py-3 pl-5 pr-6'
             }`}
             style={{
-              fontFamily: 'Raleway, sans-serif',
+
               transition: `all 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${delay}ms`,
             }}
           >
