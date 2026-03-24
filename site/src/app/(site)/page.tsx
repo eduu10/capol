@@ -150,7 +150,7 @@ export default function Home() {
         >
           {heroSlides.map((slide, index) => (
             <div key={index} className="relative min-w-full">
-              <div className="relative h-[200px] sm:h-[300px] md:h-[500px] lg:h-[600px]">
+              <div className="relative h-[160px] sm:h-[300px] md:h-[500px] lg:h-[600px]">
                 <Image
                   src={assetPath(slide.bg)}
                   alt={slide.highlight}
@@ -168,20 +168,20 @@ export default function Home() {
         <button
           type="button"
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 top-1/2 z-10 flex h-8 w-8 md:h-12 md:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+          className="absolute left-4 top-1/2 z-10 hidden sm:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
           aria-label="Slide anterior"
         >
-          <svg className="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>
         <button
           type="button"
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 z-10 flex h-8 w-8 md:h-12 md:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+          className="absolute right-4 top-1/2 z-10 hidden sm:flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
           aria-label="Próximo slide"
         >
-          <svg className="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </button>
