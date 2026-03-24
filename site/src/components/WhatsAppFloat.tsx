@@ -70,7 +70,7 @@ export default function WhatsAppFloat() {
             href={`https://wa.me/${contact.number}?text=${msg}`}
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center rounded-r-full bg-[#25d366] text-white shadow-lg hover:translate-x-1 ${
+            className={`flex items-center rounded-r-full bg-[#25d366] text-white shadow-lg hover:pr-10 hover:shadow-xl ${
               collapsed
                 ? 'gap-0 py-2 pl-3 pr-3'
                 : 'gap-3 py-3 pl-5 pr-6'
