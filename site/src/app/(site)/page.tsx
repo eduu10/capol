@@ -1,11 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { assetPath } from '@/lib/utils';
 import { products, categories } from '@/data/products';
 import { blogPosts } from '@/data/blog';
+
+const heroSlides = [
+  {
+    bg: '/imagens/banners/banner_sementes_insumos_adubos.jpg',
+    title: 'Sementes, Insumos, Adubos e',
+    highlight: 'Beneficiamento',
+    description: 'Tudo o que o produtor rural precisa para uma produção de alta qualidade, reunido em um só lugar.',
+    bullets: ['Sementes selecionadas', 'Insumos agrícolas', 'Adubos de qualidade', 'Beneficiamento completo'],
+    cta: { label: 'Ver Produtos', href: '/produtos' },
+    image: '/imagens/banners/banner_sementes_insumos_adubos.jpg',
+  },
+  {
+    bg: '/imagens/banners/banner_do_plantio_ate_colheita.jpg',
+    title: 'Do plantio até a colheita,',
+    highlight: 'estamos com você',
+    description: 'A CAPOL acompanha o produtor rural em todas as etapas, oferecendo assistência técnica e produtos de confiança.',
+    bullets: ['Assistência técnica especializada', 'Acompanhamento completo'],
+    cta: { label: 'Quem Somos', href: '/quem-somos' },
+    image: '/imagens/banners/banner_do_plantio_ate_colheita.jpg',
+  },
+  {
+    bg: '/imagens/banners/banner_facilidade_homem_campo.jpg',
+    title: 'Facilidade para o',
+    highlight: 'homem do campo',
+    description: 'Desde 1963, a CAPOL trabalha pelo desenvolvimento do produtor rural e da agropecuária regional em Oliveira/MG.',
+    bullets: ['Rações de alta qualidade', 'Cafés especiais reconhecidos'],
+    cta: { label: 'Fale Conosco', href: '/contato' },
+    image: '/imagens/banners/banner_facilidade_homem_campo.jpg',
+  },
+];
 
 const stats = [
   { value: '60+', label: 'Anos de história', icon: '🏛️' },
@@ -65,6 +95,7 @@ const categoryMap: Record<string, string> = {
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('Todos');
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const filteredProducts = activeFilter === 'Todos'
     ? products.slice(0, 6)
@@ -72,66 +103,131 @@ export default function Home() {
 
   const recentPosts = blogPosts.slice(0, 3);
 
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 6000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
   return (
     <>
-      {/* ===== HERO SECTION ===== */}
-      <section className="relative bg-[#1a5c20] overflow-hidden">
-        {/* Background leaf texture overlay */}
-        <div className="absolute inset-0 opacity-20">
-          <Image
-            src={assetPath('/imagens/banners/banner_sementes_insumos_adubos.jpg')}
-            alt=""
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Content */}
-            <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                Cultivando o campo,{' '}
-                <span className="text-[#4caf50]">colhendo esperança</span>
-              </h1>
-              <div className="w-16 h-1 bg-[#4caf50] mb-6" />
-              <p className="text-white/80 text-lg mb-8 max-w-lg" style={{ fontFamily: 'Lato, sans-serif' }}>
-                Desde 1963, a CAPOL trabalha pelo desenvolvimento do produtor rural e da agropecuária regional em Oliveira/MG.
-              </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center text-white font-semibold">
-                  <span className="text-[#4caf50] mr-3">»</span> Rações de alta qualidade para todos os segmentos
-                </li>
-                <li className="flex items-center text-white font-semibold">
-                  <span className="text-[#4caf50] mr-3">»</span> Cafés especiais reconhecidos nacionalmente
-                </li>
-              </ul>
-              <Link
-                href="/produtos"
-                className="inline-flex items-center bg-[#4caf50] hover:bg-[#388e3c] text-white font-bold px-8 py-4 rounded-full transition-colors text-sm uppercase tracking-wider"
-              >
-                Ver Produtos <span className="ml-2">→</span>
-              </Link>
-            </div>
-            {/* Right: Circular Image */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative">
-                {/* Decorative ring */}
-                <div className="w-[320px] h-[320px] md:w-[420px] md:h-[420px] rounded-full border-4 border-dashed border-[#4caf50]/40 flex items-center justify-center">
-                  <div className="relative w-[280px] h-[280px] md:w-[370px] md:h-[370px] rounded-full overflow-hidden border-4 border-white">
-                    <Image
-                      src={assetPath('/imagens/home-centro/banner-nutricao-animal.jpg')}
-                      alt="Nutrição Animal CAPOL"
-                      fill
-                      className="object-cover"
-                    />
+      {/* ===== HERO SLIDER ===== */}
+      <section className="relative overflow-hidden">
+        {/* Slides */}
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {heroSlides.map((slide, index) => (
+            <div key={index} className="relative min-w-full">
+              {/* Background image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={assetPath(slide.bg)}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                  sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1a5c20]/90 via-[#1a5c20]/70 to-transparent" />
+              </div>
+
+              {/* Content */}
+              <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  {/* Left: Text */}
+                  <div>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                      {slide.title}{' '}
+                      <span className="text-[#4caf50]">{slide.highlight}</span>
+                    </h2>
+                    <div className="w-16 h-1 bg-[#4caf50] mb-6" />
+                    <p className="text-white/80 text-lg mb-8 max-w-lg" style={{ fontFamily: 'Lato, sans-serif' }}>
+                      {slide.description}
+                    </p>
+                    <ul className="space-y-3 mb-8">
+                      {slide.bullets.map((bullet, i) => (
+                        <li key={i} className="flex items-center text-white font-semibold">
+                          <span className="text-[#4caf50] mr-3">»</span> {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={slide.cta.href}
+                      className="inline-flex items-center bg-[#4caf50] hover:bg-[#388e3c] text-white font-bold px-8 py-4 rounded-full transition-colors text-sm uppercase tracking-wider"
+                    >
+                      {slide.cta.label} <span className="ml-2">→</span>
+                    </Link>
+                  </div>
+
+                  {/* Right: Circular Image */}
+                  <div className="hidden lg:flex justify-center lg:justify-end">
+                    <div className="relative">
+                      <div className="w-[420px] h-[420px] rounded-full border-4 border-dashed border-[#4caf50]/40 flex items-center justify-center">
+                        <div className="relative w-[370px] h-[370px] rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                          <Image
+                            src={assetPath(slide.image)}
+                            alt={slide.highlight}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#ffc107] rounded-full opacity-80" />
+                      <div className="absolute -top-4 -left-4 w-16 h-16 bg-[#4caf50] rounded-full opacity-60" />
+                    </div>
                   </div>
                 </div>
-                {/* Decorative accent */}
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#ffc107] rounded-full opacity-80" />
-                <div className="absolute -top-4 -left-4 w-16 h-16 bg-[#4caf50] rounded-full opacity-60" />
               </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Arrows */}
+        <button
+          type="button"
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+          aria-label="Slide anterior"
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+          aria-label="Próximo slide"
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-3">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setCurrentSlide(index)}
+              className={`h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? 'w-8 bg-[#4caf50]'
+                  : 'w-3 bg-white/50 hover:bg-white/80'
+              }`}
+              aria-label={`Ir para slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
