@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const contacts = [
   {
-    label: 'OLIVEIRA',
+    label: 'CAPOL OLIVEIRA',
     number: '553799021671',
     greeting: 'Olá Oliveira! Vi o produto',
   },

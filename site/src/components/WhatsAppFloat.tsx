@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 const contacts = [
   {
-    label: 'OLIVEIRA',
+    label: 'CAPOL OLIVEIRA',
     number: '553799021671',
     message: 'Olá Oliveira! Vim pelo site da Capol e gostaria de mais informações.',
   },

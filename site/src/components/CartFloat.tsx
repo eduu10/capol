@@ -7,7 +7,7 @@ import { assetPath } from '@/lib/utils';
 
 const contacts = [
   {
-    label: 'OLIVEIRA',
+    label: 'CAPOL OLIVEIRA',
     number: '553799021671',
     greeting: 'Olá Oliveira!',
   },
