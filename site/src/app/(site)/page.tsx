@@ -299,19 +299,19 @@ export default function Home() {
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="font-semibold text-[#1a1a2e]">Qualidade dos Produtos</span>
-                    <span className="font-semibold text-[#1a1a2e]">95%</span>
+                    <span className="font-semibold text-[#1a1a2e]">100%</span>
                   </div>
                   <div className="w-full h-2 bg-gray-200 rounded-full">
-                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '95%' }} />
+                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '100%' }} />
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between mb-2">
                     <span className="font-semibold text-[#1a1a2e]">Satisfação dos Cooperados</span>
-                    <span className="font-semibold text-[#1a1a2e]">90%</span>
+                    <span className="font-semibold text-[#1a1a2e]">100%</span>
                   </div>
                   <div className="w-full h-2 bg-gray-200 rounded-full">
-                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '90%' }} />
+                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '100%' }} />
                   </div>
                 </div>
               </div>
