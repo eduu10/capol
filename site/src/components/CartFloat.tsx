@@ -9,7 +9,7 @@ const contacts = [
   {
     label: 'CAPOL OLIVEIRA',
     number: '553799021671',
-    greeting: 'Olá Oliveira!',
+    greeting: 'Olá Capol Oliveira!',
   },
   {
     label: 'CAPOL CAFÉS',

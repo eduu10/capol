@@ -6,7 +6,7 @@ const contacts = [
   {
     label: 'CAPOL OLIVEIRA',
     number: '553799021671',
-    greeting: 'Olá Oliveira! Vi o produto',
+    greeting: 'Olá Capol Oliveira! Vi o produto',
   },
   {
     label: 'CAPOL CAFÉS',
