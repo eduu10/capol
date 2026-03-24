@@ -338,45 +338,28 @@ export default function Home() {
               Conheça nossa estrutura
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {/* Large image */}
-            <button
-              type="button"
-              onClick={() => setLightboxImage(galleryImages[0])}
-              className="col-span-2 row-span-2 relative h-[300px] md:h-[500px] rounded-2xl overflow-hidden group cursor-pointer"
-            >
-              <Image
-                src={assetPath(galleryImages[0].src)}
-                alt={galleryImages[0].alt}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 66vw"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                <svg className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
-                </svg>
-              </div>
-            </button>
-            {/* Small images */}
-            {galleryImages.slice(1).map((img, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {galleryImages.map((img, i) => (
               <button
                 key={i}
                 type="button"
                 onClick={() => setLightboxImage(img)}
-                className="relative h-[140px] md:h-[240px] rounded-2xl overflow-hidden group cursor-pointer"
+                className="relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden group cursor-pointer"
               >
                 <Image
                   src={assetPath(img.src)}
                   alt={img.alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                   <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
                   </svg>
+                </div>
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                  <span className="text-white text-xs font-semibold">{img.alt}</span>
                 </div>
               </button>
             ))}
