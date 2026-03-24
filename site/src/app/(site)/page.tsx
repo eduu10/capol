@@ -426,74 +426,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== PRODUCTS ===== */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-            <div>
-              <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nossos Produtos</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                Rações de qualidade do campo à mesa
-              </h2>
-            </div>
-            <div className="flex gap-2 mt-4 md:mt-0 flex-wrap">
-              {categoryFilters.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
-                    activeFilter === filter
-                      ? 'bg-[#2e7d32] text-white'
-                      : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <Link
-                key={product.slug}
-                href={`/produto/${product.slug}`}
-                className="border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group bg-white"
-              >
-                <div className="flex items-center p-4 gap-4">
-                  <div className="relative w-28 h-28 flex-shrink-0 bg-[#f0f7f0] rounded-xl overflow-hidden">
-                    <Image
-                      src={assetPath(product.image)}
-                      alt={product.name}
-                      fill
-                      className="object-contain p-2"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-[#1a1a2e] mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-400 text-xs mb-3">
-                      {categories.find(c => c.slug === product.category)?.name || product.category}
-                    </p>
-                    <span className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 group-hover:border-[#2e7d32] group-hover:text-[#2e7d32] transition-colors">
-                      Ver Produto
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/produtos"
-              className="inline-flex items-center bg-[#2e7d32] hover:bg-[#1b5e20] text-white font-bold px-8 py-3 rounded-full transition-colors text-sm uppercase tracking-wider"
-            >
-              Ver Todos os Produtos →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ===== WHO WE ARE + CONTACT ===== */}
       <section className="py-20 bg-[#1a5c20] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -585,6 +517,74 @@ export default function Home() {
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PRODUCTS ===== */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+            <div>
+              <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nossos Produtos</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                Rações de qualidade do campo à mesa
+              </h2>
+            </div>
+            <div className="flex gap-2 mt-4 md:mt-0 flex-wrap">
+              {categoryFilters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
+                    activeFilter === filter
+                      ? 'bg-[#2e7d32] text-white'
+                      : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((product) => (
+              <Link
+                key={product.slug}
+                href={`/produto/${product.slug}`}
+                className="border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group bg-white"
+              >
+                <div className="flex items-center p-4 gap-4">
+                  <div className="relative w-28 h-28 flex-shrink-0 bg-[#f0f7f0] rounded-xl overflow-hidden">
+                    <Image
+                      src={assetPath(product.image)}
+                      alt={product.name}
+                      fill
+                      className="object-contain p-2"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#1a1a2e] mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-400 text-xs mb-3">
+                      {categories.find(c => c.slug === product.category)?.name || product.category}
+                    </p>
+                    <span className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 group-hover:border-[#2e7d32] group-hover:text-[#2e7d32] transition-colors">
+                      Ver Produto
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/produtos"
+              className="inline-flex items-center bg-[#2e7d32] hover:bg-[#1b5e20] text-white font-bold px-8 py-3 rounded-full transition-colors text-sm uppercase tracking-wider"
+            >
+              Ver Todos os Produtos →
+            </Link>
           </div>
         </div>
       </section>
