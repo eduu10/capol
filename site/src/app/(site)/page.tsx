@@ -674,52 +674,30 @@ export default function Home() {
       )}
 
       {/* ===== NEWSLETTER ===== */}
-      <section className="py-16 bg-[#1a5c20] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <Image
-            src={assetPath('/imagens/banners/banner_sementes_insumos_adubos.jpg')}
-            alt=""
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Image */}
-            <div className="flex justify-center">
-              <div className="relative w-[250px] h-[250px] md:w-[300px] md:h-[300px]">
-                <div className="w-full h-full rounded-full overflow-hidden border-4 border-white/20">
-                  <Image
-                    src={assetPath('/imagens/home-centro/banner-nutricao-animal.jpg')}
-                    alt="Newsletter"
-                    fill
-                    className="object-cover"
-                    sizes="300px"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Right: Newsletter form */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                Inscreva-se em nossa newsletter
-              </h2>
-              <p className="text-white/70 mb-8" style={{ fontFamily: 'Lato, sans-serif' }}>
-                Receba novidades, dicas e informações sobre nossos produtos diretamente no seu e-mail.
-              </p>
-              <div className="flex max-w-lg">
-                <input
-                  type="email"
-                  placeholder="Seu melhor e-mail"
-                  className="flex-1 px-6 py-4 rounded-l-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-[#4caf50]"
-                />
-                <button className="bg-[#4caf50] hover:bg-[#388e3c] text-white px-6 py-4 rounded-r-full transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+      <section className="py-20 bg-gradient-to-br from-[#1a5c20] via-[#2e7d32] to-[#1a5c20]">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            Inscreva-se em nossa newsletter
+          </h2>
+          <p className="text-white/70 mb-8 max-w-md mx-auto" style={{ fontFamily: 'Lato, sans-serif' }}>
+            Receba novidades, dicas e informações sobre nossos produtos diretamente no seu e-mail.
+          </p>
+          <div className="flex max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Seu melhor e-mail"
+              className="flex-1 px-6 py-4 rounded-l-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-[#4caf50]"
+            />
+            <button className="bg-[#4caf50] hover:bg-[#388e3c] text-white px-6 py-4 rounded-r-full transition-colors">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
