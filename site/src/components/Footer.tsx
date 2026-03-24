@@ -156,14 +156,14 @@ export default function Footer() {
       {/* Dark Bottom Bar */}
       <div className="bg-[#1a1a1a] py-4">
         <div className="mx-auto max-w-7xl px-4 flex flex-col items-center justify-between gap-2 text-sm text-gray-400 sm:flex-row">
-          <span>Copyrights &copy; 2023 Todos os Direitos Reservados.</span>
+          <span>Copyrights &copy; 2026 Todos os Direitos Reservados.</span>
           <a
-            href="https://agencianova.com.br"
+            href="https://weebsites.com.br/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 transition-colors hover:text-white"
           >
-            Agência Anova
+            Desenvolvido por Weebs Sites
           </a>
         </div>
       </div>
