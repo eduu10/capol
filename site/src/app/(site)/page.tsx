@@ -101,11 +101,11 @@ const services = [
 ];
 
 const galleryImages = [
-  { src: '/imagens/galeria-capas/fabrica-de-racao.jpg', alt: 'Fábrica de Ração', large: true },
+  { src: '/imagens/galeria-capas/capol-oliveira.jpg', alt: 'Capol Oliveira', large: true },
   { src: '/imagens/galeria-capas/armazenagem.jpg', alt: 'Armazenagem', large: false },
   { src: '/imagens/galeria-capas/veiculos.jpg', alt: 'Veículos', large: false },
   { src: '/imagens/galeria-capas/beneficiamento.jpg', alt: 'Beneficiamento', large: false },
-  { src: '/imagens/galeria-capas/capol-oliveira.jpg', alt: 'Capol Oliveira', large: false },
+  { src: '/imagens/galeria-capas/sao-francisco-de-paula.jpg', alt: 'São Francisco de Paula', large: false },
 ];
 
 const categoryFilters = ['Todos', 'Aves', 'Bovinos', 'Equinos', 'Suínos'];
@@ -119,10 +119,11 @@ const categoryMap: Record<string, string> = {
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('Todos');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
   const filteredProducts = activeFilter === 'Todos'
     ? products.slice(0, 6)
-    : products.filter(p => p.category === categoryMap[activeFilter]).slice(0, 6);
+    : products.filter(p => p.categorySlug === categoryMap[activeFilter]).slice(0, 6);
 
   const recentPosts = blogPosts.slice(0, 3);
 
@@ -339,26 +340,45 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {/* Large image */}
-            <div className="col-span-2 row-span-2 relative h-[300px] md:h-[500px] rounded-2xl overflow-hidden group">
+            <button
+              type="button"
+              onClick={() => setLightboxImage(galleryImages[0])}
+              className="col-span-2 row-span-2 relative h-[300px] md:h-[500px] rounded-2xl overflow-hidden group cursor-pointer"
+            >
               <Image
                 src={assetPath(galleryImages[0].src)}
                 alt={galleryImages[0].alt}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 66vw"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
-            </div>
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                <svg className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                </svg>
+              </div>
+            </button>
             {/* Small images */}
             {galleryImages.slice(1).map((img, i) => (
-              <div key={i} className="relative h-[140px] md:h-[240px] rounded-2xl overflow-hidden group">
+              <button
+                key={i}
+                type="button"
+                onClick={() => setLightboxImage(img)}
+                className="relative h-[140px] md:h-[240px] rounded-2xl overflow-hidden group cursor-pointer"
+              >
                 <Image
                   src={assetPath(img.src)}
                   alt={img.alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
-              </div>
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+                  </svg>
+                </div>
+              </button>
             ))}
           </div>
           <div className="text-center mt-8">
@@ -643,6 +663,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== LIGHTBOX MODAL ===== */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 text-white/80 hover:text-white z-10 cursor-pointer"
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div className="relative max-w-5xl w-full max-h-[85vh] aspect-video" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={assetPath(lightboxImage.src)}
+              alt={lightboxImage.alt}
+              fill
+              className="object-contain"
+              sizes="100vw"
+            />
+          </div>
+        </div>
+      )}
+
       {/* ===== NEWSLETTER ===== */}
       <section className="py-16 bg-[#1a5c20] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -658,12 +705,13 @@ export default function Home() {
             {/* Left: Image */}
             <div className="flex justify-center">
               <div className="relative w-[250px] h-[250px] md:w-[300px] md:h-[300px]">
-                <div className="w-full h-full rounded-full bg-[#ffc107] overflow-hidden flex items-center justify-center">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-white/20">
                   <Image
-                    src={assetPath('/imagens/seguimentos/bovinos.jpg')}
+                    src={assetPath('/imagens/home-centro/banner-nutricao-animal.jpg')}
                     alt="Newsletter"
                     fill
-                    className="object-cover rounded-full"
+                    className="object-cover"
+                    sizes="300px"
                   />
                 </div>
               </div>
