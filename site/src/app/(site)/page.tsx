@@ -204,6 +204,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== BLOG POSTS ===== */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow"
+              >
+                <div className="relative h-[220px] overflow-hidden">
+                  <Image
+                    src={assetPath(post.image)}
+                    alt={post.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 bg-[#2e7d32] text-white text-xs font-bold px-3 py-1 rounded-full">
+                    Capol
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
+                    <span className="flex items-center gap-1">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                      Comentários
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                      Admin
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[#1a1a2e] mb-2 group-hover:text-[#2e7d32] transition-colors" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm line-clamp-2 mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
+                    {post.excerpt}
+                  </p>
+                  <span className="text-[#2e7d32] font-semibold text-sm inline-flex items-center">
+                    Leia Mais <span className="ml-2">→</span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== WHY CHOOSE US ===== */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -537,60 +585,6 @@ export default function Home() {
                 </button>
               </form>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== BLOG ===== */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nosso Blog</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              Novidades e informações do campo
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {recentPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow"
-              >
-                <div className="relative h-[220px] overflow-hidden">
-                  <Image
-                    src={assetPath(post.image)}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4 bg-[#2e7d32] text-white text-xs font-bold px-3 py-1 rounded-full">
-                    Capol
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                    <span className="flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-                      Comentários
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                      Admin
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-[#1a1a2e] mb-2 group-hover:text-[#2e7d32] transition-colors" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm line-clamp-2 mb-4" style={{ fontFamily: 'Lato, sans-serif' }}>
-                    {post.excerpt}
-                  </p>
-                  <span className="text-[#2e7d32] font-semibold text-sm inline-flex items-center">
-                    Leia Mais <span className="ml-2">→</span>
-                  </span>
-                </div>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
