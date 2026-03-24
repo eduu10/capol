@@ -58,7 +58,7 @@ export default function WhatsAppFloat() {
   }, []);
 
   return (
-    <div className="fixed right-0 bottom-20 z-50 flex flex-col gap-3">
+    <div className="fixed right-0 bottom-24 z-50 flex flex-col gap-3">
       {contacts.map((contact, index) => {
         const msg = encodeURIComponent(contact.message);
         // Stagger delay: each button collapses/expands with a slight delay

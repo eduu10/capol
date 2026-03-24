@@ -9,6 +9,7 @@ import {
 } from '@/data/products';
 import { assetPath } from '@/lib/utils';
 import WhatsAppModal from '@/components/WhatsAppModal';
+import AddToCartButton from '@/components/AddToCartButton';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -166,8 +167,11 @@ export default async function ProdutoPage({ params }: PageProps) {
                 </div>
               )}
 
-              {/* CTA Button */}
-              <WhatsAppModal productName={product.name} />
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <WhatsAppModal productName={product.name} />
+                <AddToCartButton slug={product.slug} name={product.name} image={product.image} />
+              </div>
             </div>
           </div>
         </div>
