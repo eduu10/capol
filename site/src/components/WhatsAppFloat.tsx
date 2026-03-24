@@ -58,7 +58,7 @@ export default function WhatsAppFloat() {
   }, []);
 
   return (
-    <div className="fixed right-0 bottom-24 z-50 flex flex-col gap-3">
+    <div className="fixed left-0 bottom-24 z-50 flex flex-col gap-3">
       {contacts.map((contact, index) => {
         const msg = encodeURIComponent(contact.message);
         // Stagger delay: each button collapses/expands with a slight delay
@@ -70,7 +70,7 @@ export default function WhatsAppFloat() {
             href={`https://wa.me/${contact.number}?text=${msg}`}
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center rounded-l-full bg-[#25d366] text-white shadow-lg hover:-translate-x-1 ${
+            className={`flex items-center rounded-r-full bg-[#25d366] text-white shadow-lg hover:translate-x-1 ${
               collapsed
                 ? 'gap-0 py-2 pl-3 pr-3'
                 : 'gap-3 py-3 pl-5 pr-6'
