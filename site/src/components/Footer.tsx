@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { assetPath } from '@/lib/utils';
@@ -9,6 +10,7 @@ export default function Footer() {
   const { config } = useSiteConfig();
   const footer = config.footer;
   const hours = config.businessHours;
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
 
   const formatHours = () => {
     const weekdays = hours.filter(h => !['Sábado', 'Domingo'].includes(h.day));
@@ -85,15 +87,20 @@ export default function Footer() {
               <div className="mb-4 h-[3px] w-12" style={{ backgroundColor: config.primaryColor }} />
               <div className="grid grid-cols-3 gap-2">
                 {footer.galleryThumbnails.map((thumb) => (
-                  <Link key={thumb.src} href="/galerias" className="gallery-item block overflow-hidden rounded">
+                  <button
+                    key={thumb.src}
+                    type="button"
+                    onClick={() => setLightbox(thumb)}
+                    className="gallery-item block overflow-hidden rounded cursor-pointer"
+                  >
                     <Image
                       src={assetPath(thumb.src)}
                       alt={thumb.alt}
                       width={120}
                       height={90}
-                      className="h-[70px] w-full object-cover"
+                      className="h-[70px] w-full object-cover hover:scale-105 transition-transform duration-300"
                     />
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>
@@ -143,6 +150,18 @@ export default function Footer() {
           )}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightbox && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4" onClick={() => setLightbox(null)}>
+          <button type="button" onClick={() => setLightbox(null)} className="absolute top-4 right-4 text-white/80 hover:text-white z-10">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+          <div className="relative max-w-4xl w-full max-h-[85vh] aspect-video" onClick={(e) => e.stopPropagation()}>
+            <Image src={assetPath(lightbox.src)} alt={lightbox.alt} fill className="object-contain" sizes="100vw" />
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
