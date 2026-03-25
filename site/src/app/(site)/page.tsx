@@ -161,18 +161,33 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
-              <Link key={product.slug} href={`/produto/${product.slug}`} className="border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group bg-white">
+              <div key={product.slug} className="border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group bg-white">
                 <div className="flex items-center p-4 gap-4">
-                  <div className="relative w-28 h-28 flex-shrink-0 bg-[#f0f7f0] rounded-xl overflow-hidden">
+                  <Link href={`/produto/${product.slug}`} className="relative w-28 h-28 flex-shrink-0 bg-[#f0f7f0] rounded-xl overflow-hidden">
                     <Image src={assetPath(product.image)} alt={product.name} fill className="object-contain p-2" />
-                  </div>
+                  </Link>
                   <div>
-                    <h3 className="font-bold text-[#1a1a2e] mb-1">{product.name}</h3>
+                    <Link href={`/produto/${product.slug}`}>
+                      <h3 className="font-bold text-[#1a1a2e] mb-1 hover:text-[#2e7d32] transition-colors">{product.name}</h3>
+                    </Link>
                     <p className="text-gray-400 text-xs mb-3">{categories.find(c => c.slug === product.category)?.name || product.category}</p>
-                    <span className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 transition-colors">Ver Produto</span>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <Link href={`/produto/${product.slug}`} className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors">Ver Produto</Link>
+                      <button type="button" onClick={() => {
+                        const cart = JSON.parse(localStorage.getItem('capol_cart') || '[]');
+                        if (!cart.find((item: { slug: string }) => item.slug === product.slug)) {
+                          cart.push({ slug: product.slug, name: product.name, image: product.image, qty: 1 });
+                          localStorage.setItem('capol_cart', JSON.stringify(cart));
+                        }
+                        window.dispatchEvent(new Event('cart-updated'));
+                      }} className="inline-flex items-center gap-1 rounded-full px-4 py-1 text-xs font-semibold text-white transition-colors" style={{ backgroundColor: pc }}>
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        Carrinho
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
           <div className="text-center mt-10">
