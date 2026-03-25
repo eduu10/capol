@@ -4,16 +4,20 @@ import { useState, useCallback } from 'react';
 import { useSiteConfig, SiteConfig } from '@/contexts/SiteConfigContext';
 import TabGeral from './components/TabGeral';
 import TabBanners from './components/TabBanners';
+import TabHomepage from './components/TabHomepage';
 import TabHorarios from './components/TabHorarios';
 import TabContato from './components/TabContato';
+import TabFooter from './components/TabFooter';
 import TabSEO from './components/TabSEO';
 import TabRedesSociais from './components/TabRedesSociais';
 
 const tabs = [
   { id: 'geral', label: 'Geral' },
+  { id: 'homepage', label: 'Homepage' },
   { id: 'banners', label: 'Banners' },
   { id: 'horarios', label: 'Horários' },
   { id: 'contato', label: 'Contato & WhatsApp' },
+  { id: 'footer', label: 'Rodapé' },
   { id: 'seo', label: 'SEO' },
   { id: 'redes', label: 'Redes Sociais' },
 ] as const;
@@ -41,12 +45,16 @@ export default function ConfiguracoesPage() {
     switch (activeTab) {
       case 'geral':
         return <TabGeral {...props} />;
+      case 'homepage':
+        return <TabHomepage {...props} />;
       case 'banners':
         return <TabBanners {...props} />;
       case 'horarios':
         return <TabHorarios {...props} />;
       case 'contato':
         return <TabContato {...props} />;
+      case 'footer':
+        return <TabFooter {...props} />;
       case 'seo':
         return <TabSEO {...props} />;
       case 'redes':
@@ -79,12 +87,8 @@ export default function ConfiguracoesPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
-                Configurações do Site
-              </h1>
-              <p className="text-sm text-gray-500">
-                Gerencie todas as configurações do site Capol
-              </p>
+              <h1 className="text-2xl font-bold text-gray-900">Configurações do Site</h1>
+              <p className="text-sm text-gray-500">Gerencie todas as configurações do site Capol</p>
             </div>
           </div>
         </div>
