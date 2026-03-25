@@ -8,6 +8,7 @@ import { products, categories } from '@/data/products';
 import { blogPosts } from '@/data/blog';
 import { galleries } from '@/data/galleries';
 import { useSiteConfig } from '@/contexts/SiteConfigContext';
+import { useCart } from '@/contexts/CartContext';
 
 const statIcons = [
   <svg key="h" className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
@@ -26,11 +27,13 @@ const categoryFilters = categories.map(c => c.name);
 
 export default function Home() {
   const { config } = useSiteConfig();
+  const { addItem } = useCart();
   const [activeFilter, setActiveFilter] = useState('Todos');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const [galleryModal, setGalleryModal] = useState<{ name: string; images: string[] } | null>(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [addedSlugs, setAddedSlugs] = useState<Set<string>>(new Set());
   const filterScrollRef = useRef<HTMLDivElement>(null);
 
   const heroSlides = config.heroSlides;
@@ -174,15 +177,15 @@ export default function Home() {
                     <div className="flex items-center gap-2 flex-wrap">
                       <Link href={`/produto/${product.slug}`} className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors">Ver Produto</Link>
                       <button type="button" onClick={() => {
-                        const cart = JSON.parse(localStorage.getItem('capol_cart') || '[]');
-                        if (!cart.find((item: { slug: string }) => item.slug === product.slug)) {
-                          cart.push({ slug: product.slug, name: product.name, image: product.image, qty: 1 });
-                          localStorage.setItem('capol_cart', JSON.stringify(cart));
-                        }
-                        window.dispatchEvent(new Event('cart-updated'));
-                      }} className="inline-flex items-center gap-1 rounded-full px-4 py-1 text-xs font-semibold text-white transition-colors" style={{ backgroundColor: pc }}>
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                        Carrinho
+                        addItem({ slug: product.slug, name: product.name, image: product.image });
+                        setAddedSlugs(prev => { const next = new Set(prev); next.add(product.slug); return next; });
+                        setTimeout(() => setAddedSlugs(prev => { const next = new Set(prev); next.delete(product.slug); return next; }), 2000);
+                      }} className={`inline-flex items-center gap-1 rounded-full px-4 py-1 text-xs font-semibold text-white transition-all ${addedSlugs.has(product.slug) ? 'bg-[#25d366]' : ''}`} style={!addedSlugs.has(product.slug) ? { backgroundColor: pc } : {}}>
+                        {addedSlugs.has(product.slug) ? (
+                          <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>Adicionado!</>
+                        ) : (
+                          <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>Carrinho</>
+                        )}
                       </button>
                     </div>
                   </div>
