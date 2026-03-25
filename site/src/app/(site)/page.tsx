@@ -136,13 +136,13 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-            <div>
+            <div className="text-center md:text-left">
               <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: pc }}>{config.productsSectionTag}</span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2">{config.productsSectionTitle}</h2>
             </div>
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-2 mt-4 md:mt-0">
+            <div className="flex flex-col md:flex-row items-center md:items-center gap-2 mt-4 md:mt-0">
               <Link href="/produtos" className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer text-center ${activeFilter === 'Todos' ? 'text-white' : 'bg-white border border-gray-300 text-gray-600'}`} style={activeFilter === 'Todos' ? { backgroundColor: pc } : {}}>Todos</Link>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 justify-center">
                 <button type="button" onClick={() => filterScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })} className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 transition-colors cursor-pointer" aria-label="Categorias anteriores">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
                 </button>
