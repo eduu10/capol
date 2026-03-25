@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { assetPath } from '@/lib/utils';
 import { products, categories } from '@/data/products';
 import { blogPosts } from '@/data/blog';
+import { galleries } from '@/data/galleries';
 import { useSiteConfig } from '@/contexts/SiteConfigContext';
 
 const statIcons = [
@@ -187,17 +188,17 @@ export default function Home() {
             <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: pc }}>{config.gallerySectionTitle}</span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2">{config.gallerySectionSubtitle}</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {config.homeGalleryImages.map((img, i) => (
-              <button key={i} type="button" onClick={() => setLightboxImage(img)} className="relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden group cursor-pointer">
-                <Image src={assetPath(img.src)} alt={img.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw" />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {galleries.slice(0, 3).map((gallery) => (
+              <Link key={gallery.id} href={`/galeria/${gallery.id}`} className="relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden group cursor-pointer block">
+                <Image src={assetPath(gallery.cover)} alt={gallery.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                   <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" /></svg>
                 </div>
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                  <span className="text-white text-xs font-semibold">{img.alt}</span>
+                  <span className="text-white text-xs font-semibold">{gallery.name}</span>
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-8">
