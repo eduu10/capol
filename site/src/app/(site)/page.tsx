@@ -259,17 +259,18 @@ export default function Home() {
                 Rações de qualidade do campo à mesa
               </h2>
             </div>
-            <div className="flex items-center gap-2 mt-4 md:mt-0">
-              <button
-                onClick={() => setActiveFilter('Todos')}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer ${
+            <div className="flex flex-col gap-2 mt-4 md:mt-0">
+              <Link
+                href="/produtos"
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer text-center ${
                   activeFilter === 'Todos'
                     ? 'bg-[#2e7d32] text-white'
                     : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
                 }`}
               >
                 Todos
-              </button>
+              </Link>
+              <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => filterScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
@@ -308,6 +309,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               </button>
+              </div>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
