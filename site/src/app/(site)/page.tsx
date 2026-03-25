@@ -381,15 +381,13 @@ export default function Home() {
 
       {/* ===== GALLERY MODAL ===== */}
       {galleryModal && (
-        <div className="fixed inset-0 z-[9999] bg-black/90 flex flex-col">
-          {/* Close button - absolute top right, always on top */}
-          <button type="button" onClick={() => setGalleryModal(null)} className="absolute top-3 right-3 z-[10000] text-white/80 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-2 transition-colors">
+        <div className="fixed inset-0 z-[9999] bg-black/90 flex flex-col" onClick={() => setGalleryModal(null)}>
+          {/* Close button */}
+          <button type="button" onClick={(e) => { e.stopPropagation(); setGalleryModal(null); }} className="absolute top-3 right-3 z-[10000] text-white/80 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-2 transition-colors">
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
-          {/* Click backdrop to close */}
-          <div className="absolute inset-0 -z-10" onClick={() => setGalleryModal(null)} />
           {/* Header */}
-          <div className="flex items-center px-4 py-3 flex-shrink-0">
+          <div className="flex items-center px-4 py-3 flex-shrink-0 pointer-events-none">
             <div>
               <h3 className="text-white font-bold text-lg">{galleryModal.name}</h3>
               <p className="text-white/50 text-sm">{galleryIndex + 1} / {galleryModal.images.length}</p>
@@ -397,14 +395,14 @@ export default function Home() {
           </div>
 
           {/* Main image */}
-          <div className="flex-1 flex items-center justify-center relative min-h-0 px-4" onClick={(e) => e.stopPropagation()}>
-            <button type="button" onClick={() => setGalleryIndex((prev) => (prev - 1 + galleryModal.images.length) % galleryModal.images.length)} className="absolute left-2 md:left-6 z-10 h-12 w-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+          <div className="flex-1 flex items-center justify-center relative min-h-0 px-4">
+            <button type="button" onClick={(e) => { e.stopPropagation(); setGalleryIndex((prev) => (prev - 1 + galleryModal.images.length) % galleryModal.images.length); }} className="absolute left-2 md:left-6 z-10 h-12 w-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
             </button>
-            <div className="relative w-full max-w-5xl h-full max-h-[70vh]">
+            <div className="relative w-full max-w-5xl h-full max-h-[70vh]" onClick={(e) => e.stopPropagation()}>
               <Image src={assetPath(galleryModal.images[galleryIndex])} alt={`${galleryModal.name} - Foto ${galleryIndex + 1}`} fill className="object-contain" sizes="100vw" />
             </div>
-            <button type="button" onClick={() => setGalleryIndex((prev) => (prev + 1) % galleryModal.images.length)} className="absolute right-2 md:right-6 z-10 h-12 w-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+            <button type="button" onClick={(e) => { e.stopPropagation(); setGalleryIndex((prev) => (prev + 1) % galleryModal.images.length); }} className="absolute right-2 md:right-6 z-10 h-12 w-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </button>
           </div>
