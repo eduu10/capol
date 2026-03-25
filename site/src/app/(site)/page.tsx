@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { assetPath } from '@/lib/utils';
@@ -107,13 +107,7 @@ const galleryImages = [
   { src: '/imagens/galeria-capas/sao-francisco-de-paula.jpg', alt: 'São Francisco de Paula', large: false },
 ];
 
-const categoryFilters = ['Todos', 'Aves', 'Bovinos', 'Equinos', 'Suínos'];
-const categoryMap: Record<string, string> = {
-  'Aves': 'aves',
-  'Bovinos': 'corte',
-  'Equinos': 'equinos',
-  'Suínos': 'suinos',
-};
+const categoryFilters = ['Todos', ...categories.map(c => c.name)];
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('Todos');
@@ -122,7 +116,11 @@ export default function Home() {
 
   const filteredProducts = activeFilter === 'Todos'
     ? products.slice(0, 6)
-    : products.filter(p => p.categorySlug === categoryMap[activeFilter]).slice(0, 6);
+    : products.filter(p => {
+        const cat = categories.find(c => c.name === activeFilter);
+        return cat ? p.categorySlug === cat.slug : false;
+      }).slice(0, 6);
+  const filterScrollRef = useRef<HTMLDivElement>(null);
 
   const recentPosts = blogPosts.slice(0, 3);
 
@@ -261,20 +259,46 @@ export default function Home() {
                 Rações de qualidade do campo à mesa
               </h2>
             </div>
-            <div className="flex gap-2 mt-4 md:mt-0 flex-wrap">
-              {categoryFilters.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
-                    activeFilter === filter
-                      ? 'bg-[#2e7d32] text-white'
-                      : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
+            <div className="flex items-center gap-2 mt-4 md:mt-0">
+              <button
+                type="button"
+                onClick={() => filterScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
+                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors"
+                aria-label="Categorias anteriores"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+              </button>
+              <div
+                ref={filterScrollRef}
+                className="flex gap-2 overflow-x-auto scrollbar-hide"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {categoryFilters.map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setActiveFilter(filter)}
+                    className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${
+                      activeFilter === filter
+                        ? 'bg-[#2e7d32] text-white'
+                        : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
+                    }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => filterScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
+                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors"
+                aria-label="Próximas categorias"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
