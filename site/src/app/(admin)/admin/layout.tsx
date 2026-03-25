@@ -12,7 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [checking, setChecking] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const isLoginPage = pathname === '/admin/login';
+  const isLoginPage = pathname?.includes('/admin/login');
 
   useEffect(() => {
     const auth = localStorage.getItem('capol_admin_auth');
