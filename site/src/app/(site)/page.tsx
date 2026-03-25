@@ -174,17 +174,17 @@ export default function Home() {
                       <h3 className="font-bold text-[#1a1a2e] mb-1 hover:text-[#2e7d32] transition-colors">{product.name}</h3>
                     </Link>
                     <p className="text-gray-400 text-xs mb-3">{categories.find(c => c.slug === product.category)?.name || product.category}</p>
-                    <div className="flex items-center gap-2 flex-wrap">
+                    <div className="flex items-center gap-2">
                       <Link href={`/produto/${product.slug}`} className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors">Ver Produto</Link>
                       <button type="button" onClick={() => {
                         addItem({ slug: product.slug, name: product.name, image: product.image });
                         setAddedSlugs(prev => { const next = new Set(prev); next.add(product.slug); return next; });
                         setTimeout(() => setAddedSlugs(prev => { const next = new Set(prev); next.delete(product.slug); return next; }), 2000);
-                      }} className={`inline-flex items-center gap-1 rounded-full px-4 py-1 text-xs font-semibold text-white transition-all ${addedSlugs.has(product.slug) ? 'bg-[#25d366]' : ''}`} style={!addedSlugs.has(product.slug) ? { backgroundColor: pc } : {}}>
+                      }} className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold text-white transition-all whitespace-nowrap ${addedSlugs.has(product.slug) ? 'bg-[#25d366]' : ''}`} style={!addedSlugs.has(product.slug) ? { backgroundColor: pc } : {}}>
                         {addedSlugs.has(product.slug) ? (
-                          <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>Adicionado!</>
+                          <><svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>OK</>
                         ) : (
-                          <><svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>Carrinho</>
+                          <><svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>Carrinho</>
                         )}
                       </button>
                     </div>
