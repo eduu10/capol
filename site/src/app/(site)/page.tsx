@@ -381,14 +381,14 @@ export default function Home() {
 
       {/* ===== GALLERY MODAL ===== */}
       {galleryModal && (
-        <div className="fixed inset-0 z-[100] bg-black/90 flex flex-col" onClick={() => setGalleryModal(null)}>
+        <div className="fixed inset-0 z-[9999] bg-black/90 flex flex-col" onClick={() => setGalleryModal(null)}>
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
             <div>
               <h3 className="text-white font-bold text-lg">{galleryModal.name}</h3>
               <p className="text-white/50 text-sm">{galleryIndex + 1} / {galleryModal.images.length}</p>
             </div>
-            <button type="button" onClick={() => setGalleryModal(null)} className="text-white/70 hover:text-white p-2">
+            <button type="button" onClick={() => setGalleryModal(null)} className="text-white/70 hover:text-white p-2 z-10">
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
