@@ -29,6 +29,8 @@ export default function Home() {
   const [activeFilter, setActiveFilter] = useState('Todos');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
+  const [galleryModal, setGalleryModal] = useState<{ name: string; images: string[] } | null>(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   const filterScrollRef = useRef<HTMLDivElement>(null);
 
   const heroSlides = config.heroSlides;
@@ -190,7 +192,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {galleries.slice(0, 3).map((gallery) => (
-              <Link key={gallery.id} href={`/galeria/${gallery.id}`} className="relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden group cursor-pointer block">
+              <button key={gallery.id} type="button" onClick={() => { setGalleryModal({ name: gallery.name, images: gallery.images }); setGalleryIndex(0); }} className="relative h-[180px] md:h-[220px] rounded-2xl overflow-hidden group cursor-pointer block w-full text-left">
                 <Image src={assetPath(gallery.cover)} alt={gallery.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                   <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" /></svg>
@@ -198,7 +200,7 @@ export default function Home() {
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3">
                   <span className="text-white text-xs font-semibold">{gallery.name}</span>
                 </div>
-              </Link>
+              </button>
             ))}
           </div>
           <div className="text-center mt-8">
@@ -355,6 +357,46 @@ export default function Home() {
           </button>
           <div className="relative max-w-5xl w-full max-h-[85vh] aspect-video" onClick={(e) => e.stopPropagation()}>
             <Image src={assetPath(lightboxImage.src)} alt={lightboxImage.alt} fill className="object-contain" sizes="100vw" />
+          </div>
+        </div>
+      )}
+
+      {/* ===== GALLERY MODAL ===== */}
+      {galleryModal && (
+        <div className="fixed inset-0 z-[100] bg-black/90 flex flex-col" onClick={() => setGalleryModal(null)}>
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+            <div>
+              <h3 className="text-white font-bold text-lg">{galleryModal.name}</h3>
+              <p className="text-white/50 text-sm">{galleryIndex + 1} / {galleryModal.images.length}</p>
+            </div>
+            <button type="button" onClick={() => setGalleryModal(null)} className="text-white/70 hover:text-white p-2">
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+          </div>
+
+          {/* Main image */}
+          <div className="flex-1 flex items-center justify-center relative min-h-0 px-4" onClick={(e) => e.stopPropagation()}>
+            <button type="button" onClick={() => setGalleryIndex((prev) => (prev - 1 + galleryModal.images.length) % galleryModal.images.length)} className="absolute left-2 md:left-6 z-10 h-12 w-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+            </button>
+            <div className="relative w-full max-w-5xl h-full max-h-[70vh]">
+              <Image src={assetPath(galleryModal.images[galleryIndex])} alt={`${galleryModal.name} - Foto ${galleryIndex + 1}`} fill className="object-contain" sizes="100vw" />
+            </div>
+            <button type="button" onClick={() => setGalleryIndex((prev) => (prev + 1) % galleryModal.images.length)} className="absolute right-2 md:right-6 z-10 h-12 w-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            </button>
+          </div>
+
+          {/* Thumbnails */}
+          <div className="flex-shrink-0 px-4 py-3 overflow-x-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex gap-2 justify-center">
+              {galleryModal.images.map((img, i) => (
+                <button key={i} type="button" onClick={() => setGalleryIndex(i)} className={`relative w-16 h-12 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${i === galleryIndex ? 'border-white opacity-100' : 'border-transparent opacity-50 hover:opacity-80'}`}>
+                  <Image src={assetPath(img)} alt="" fill className="object-cover" sizes="64px" />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
