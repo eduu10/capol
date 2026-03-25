@@ -259,7 +259,7 @@ export default function Home() {
                 Rações de qualidade do campo à mesa
               </h2>
             </div>
-            <div className="flex flex-col gap-2 mt-4 md:mt-0">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-2 mt-4 md:mt-0">
               <Link
                 href="/produtos"
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer text-center ${
@@ -271,44 +271,44 @@ export default function Home() {
                 Todos
               </Link>
               <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => filterScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
-                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors cursor-pointer"
-                aria-label="Categorias anteriores"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-              </button>
-              <div
-                ref={filterScrollRef}
-                className="flex gap-2 overflow-x-auto max-w-[340px] no-scrollbar py-1"
-              >
-                {categoryFilters.map((filter) => (
-                  <button
-                    key={filter}
-                    onClick={() => setActiveFilter(filter)}
-                    className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer ${
-                      activeFilter === filter
-                        ? 'bg-[#2e7d32] text-white'
-                        : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
-                    }`}
-                  >
-                    {filter}
-                  </button>
-                ))}
-              </div>
-              <button
-                type="button"
-                onClick={() => filterScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
-                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors cursor-pointer"
-                aria-label="Próximas categorias"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => filterScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
+                  className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors cursor-pointer"
+                  aria-label="Categorias anteriores"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+                <div
+                  ref={filterScrollRef}
+                  className="flex gap-2 overflow-x-auto max-w-[250px] md:max-w-[340px] no-scrollbar"
+                >
+                  {categoryFilters.map((filter) => (
+                    <button
+                      key={filter}
+                      onClick={() => setActiveFilter(filter)}
+                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer ${
+                        activeFilter === filter
+                          ? 'bg-[#2e7d32] text-white'
+                          : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
+                      }`}
+                    >
+                      {filter}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => filterScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
+                  className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors cursor-pointer"
+                  aria-label="Próximas categorias"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
