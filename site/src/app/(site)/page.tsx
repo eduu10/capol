@@ -103,7 +103,6 @@ const services = [
 const galleryImages = [
   { src: '/imagens/galeria-capas/capol-oliveira.jpg', alt: 'Capol Oliveira', large: true },
   { src: '/imagens/galeria-capas/armazenagem.jpg', alt: 'Armazenagem', large: false },
-  { src: '/imagens/galeria-capas/veiculos.jpg', alt: 'Veículos', large: false },
   { src: '/imagens/galeria-capas/beneficiamento.jpg', alt: 'Beneficiamento', large: false },
   { src: '/imagens/galeria-capas/sao-francisco-de-paula.jpg', alt: 'São Francisco de Paula', large: false },
 ];
