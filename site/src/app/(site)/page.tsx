@@ -107,7 +107,7 @@ const galleryImages = [
   { src: '/imagens/galeria-capas/sao-francisco-de-paula.jpg', alt: 'São Francisco de Paula', large: false },
 ];
 
-const categoryFilters = ['Todos', ...categories.map(c => c.name)];
+const categoryFilters = categories.map(c => c.name);
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('Todos');
@@ -259,7 +259,17 @@ export default function Home() {
                 Rações de qualidade do campo à mesa
               </h2>
             </div>
-            <div className="flex items-center gap-2 mt-4 md:mt-0 max-w-[420px]">
+            <div className="flex items-center gap-2 mt-4 md:mt-0">
+              <button
+                onClick={() => setActiveFilter('Todos')}
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer ${
+                  activeFilter === 'Todos'
+                    ? 'bg-[#2e7d32] text-white'
+                    : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
+                }`}
+              >
+                Todos
+              </button>
               <button
                 type="button"
                 onClick={() => filterScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
@@ -272,7 +282,7 @@ export default function Home() {
               </button>
               <div
                 ref={filterScrollRef}
-                className="flex gap-2 overflow-x-hidden"
+                className="flex gap-2 overflow-x-hidden max-w-[340px]"
               >
                 {categoryFilters.map((filter) => (
                   <button
@@ -351,7 +361,7 @@ export default function Home() {
               Conheça nossa estrutura
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {galleryImages.map((img, i) => (
               <button
                 key={i}
