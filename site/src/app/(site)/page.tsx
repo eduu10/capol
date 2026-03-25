@@ -259,11 +259,11 @@ export default function Home() {
                 Rações de qualidade do campo à mesa
               </h2>
             </div>
-            <div className="flex items-center gap-2 mt-4 md:mt-0">
+            <div className="flex items-center gap-2 mt-4 md:mt-0 max-w-[420px]">
               <button
                 type="button"
                 onClick={() => filterScrollRef.current?.scrollBy({ left: -150, behavior: 'smooth' })}
-                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors"
+                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors cursor-pointer"
                 aria-label="Categorias anteriores"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -272,14 +272,13 @@ export default function Home() {
               </button>
               <div
                 ref={filterScrollRef}
-                className="flex gap-2 overflow-x-auto scrollbar-hide"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                className="flex gap-2 overflow-x-hidden"
               >
                 {categoryFilters.map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setActiveFilter(filter)}
-                    className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${
+                    className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer ${
                       activeFilter === filter
                         ? 'bg-[#2e7d32] text-white'
                         : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
@@ -292,7 +291,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => filterScrollRef.current?.scrollBy({ left: 150, behavior: 'smooth' })}
-                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors"
+                className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:border-[#2e7d32] hover:text-[#2e7d32] transition-colors cursor-pointer"
                 aria-label="Próximas categorias"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
