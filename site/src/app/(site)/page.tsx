@@ -283,13 +283,13 @@ export default function Home() {
                 </button>
                 <div
                   ref={filterScrollRef}
-                  className="flex gap-2 overflow-x-auto max-w-[250px] md:max-w-[340px] no-scrollbar"
+                  className="flex gap-2 overflow-x-auto max-w-[200px] sm:max-w-[300px] md:max-w-[400px] no-scrollbar snap-x"
                 >
                   {categoryFilters.map((filter) => (
                     <button
                       key={filter}
                       onClick={() => setActiveFilter(filter)}
-                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer ${
+                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap flex-shrink-0 cursor-pointer snap-start ${
                         activeFilter === filter
                           ? 'bg-[#2e7d32] text-white'
                           : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
