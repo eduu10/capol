@@ -283,7 +283,7 @@ export default function Home() {
               </button>
               <div
                 ref={filterScrollRef}
-                className="flex gap-2 overflow-x-hidden max-w-[340px]"
+                className="flex gap-2 overflow-x-auto max-w-[340px] no-scrollbar py-1"
               >
                 {categoryFilters.map((filter) => (
                   <button
