@@ -252,76 +252,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== WHY CHOOSE US ===== */}
+      {/* ===== PRODUCTS ===== */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left: Image composition */}
-            <div className="flex justify-center">
-              <div className="relative">
-                <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-4 border-dashed border-[#2e7d32]/30">
-                  <Image
-                    src={assetPath('/imagens/home-centro/banner-racao-balanceada.jpg')}
-                    alt="Ração Balanceada"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                {/* Floating small circles */}
-                <div className="absolute -top-6 right-0 w-16 h-16 rounded-full border-2 border-dashed border-[#2e7d32]/40 flex items-center justify-center bg-white shadow-md">
-                  <svg className="w-7 h-7 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                  </svg>
-                </div>
-                <div className="absolute -left-6 top-1/2 w-14 h-14 rounded-full border-2 border-dashed border-[#2e7d32]/40 flex items-center justify-center bg-white shadow-md">
-                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                  </svg>
-                </div>
-                <div className="absolute -bottom-4 left-1/4 w-14 h-14 rounded-full border-2 border-dashed border-[#2e7d32]/40 flex items-center justify-center bg-white shadow-md">
-                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            {/* Right: Content */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
             <div>
-              <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2 mb-4">
-                Qualidade e tradição no campo desde 1963
+              <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nossos Produtos</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2">
+                Rações de qualidade do campo à mesa
               </h2>
-              <p className="text-gray-500 mb-8">
-                A CAPOL é uma cooperativa agropecuária comprometida com o desenvolvimento rural, oferecendo os melhores produtos e serviços para o produtor.
-              </p>
-              {/* Progress bars */}
-              <div className="space-y-6 mb-8">
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-semibold text-[#1a1a2e]">Qualidade dos Produtos</span>
-                    <span className="font-semibold text-[#1a1a2e]">100%</span>
-                  </div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full">
-                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '100%' }} />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-semibold text-[#1a1a2e]">Satisfação dos Cooperados</span>
-                    <span className="font-semibold text-[#1a1a2e]">100%</span>
-                  </div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full">
-                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '100%' }} />
-                  </div>
-                </div>
-              </div>
-              <Link
-                href="/quem-somos"
-                className="inline-flex items-center border-2 border-[#ffc107] text-[#1a1a2e] font-semibold px-8 py-3 rounded-full hover:bg-[#ffc107] hover:text-white transition-colors"
-              >
-                Saiba Mais
-              </Link>
             </div>
+            <div className="flex gap-2 mt-4 md:mt-0 flex-wrap">
+              {categoryFilters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
+                    activeFilter === filter
+                      ? 'bg-[#2e7d32] text-white'
+                      : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((product) => (
+              <Link
+                key={product.slug}
+                href={`/produto/${product.slug}`}
+                className="border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group bg-white"
+              >
+                <div className="flex items-center p-4 gap-4">
+                  <div className="relative w-28 h-28 flex-shrink-0 bg-[#f0f7f0] rounded-xl overflow-hidden">
+                    <Image
+                      src={assetPath(product.image)}
+                      alt={product.name}
+                      fill
+                      className="object-contain p-2"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#1a1a2e] mb-1">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-400 text-xs mb-3">
+                      {categories.find(c => c.slug === product.category)?.name || product.category}
+                    </p>
+                    <span className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 group-hover:border-[#2e7d32] group-hover:text-[#2e7d32] transition-colors">
+                      Ver Produto
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/produtos"
+              className="inline-flex items-center bg-[#2e7d32] hover:bg-[#1b5e20] text-white font-bold px-8 py-3 rounded-full transition-colors text-sm uppercase tracking-wider"
+            >
+              Ver Todos os Produtos →
+            </Link>
           </div>
         </div>
       </section>
@@ -521,70 +515,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== PRODUCTS ===== */}
+      {/* ===== WHY CHOOSE US ===== */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left: Image composition */}
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-4 border-dashed border-[#2e7d32]/30">
+                  <Image
+                    src={assetPath('/imagens/home-centro/banner-racao-balanceada.jpg')}
+                    alt="Ração Balanceada"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="absolute -top-6 right-0 w-16 h-16 rounded-full border-2 border-dashed border-[#2e7d32]/40 flex items-center justify-center bg-white shadow-md">
+                  <svg className="w-7 h-7 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                  </svg>
+                </div>
+                <div className="absolute -left-6 top-1/2 w-14 h-14 rounded-full border-2 border-dashed border-[#2e7d32]/40 flex items-center justify-center bg-white shadow-md">
+                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                  </svg>
+                </div>
+                <div className="absolute -bottom-4 left-1/4 w-14 h-14 rounded-full border-2 border-dashed border-[#2e7d32]/40 flex items-center justify-center bg-white shadow-md">
+                  <svg className="w-6 h-6 text-[#2e7d32]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            {/* Right: Content */}
             <div>
-              <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Nossos Produtos</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2">
-                Rações de qualidade do campo à mesa
+              <span className="text-[#2e7d32] font-semibold text-sm uppercase tracking-wider">Por que nos escolher</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mt-2 mb-4">
+                Qualidade e tradição no campo desde 1963
               </h2>
-            </div>
-            <div className="flex gap-2 mt-4 md:mt-0 flex-wrap">
-              {categoryFilters.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
-                    activeFilter === filter
-                      ? 'bg-[#2e7d32] text-white'
-                      : 'bg-white border border-gray-300 text-gray-600 hover:border-[#2e7d32] hover:text-[#2e7d32]'
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <Link
-                key={product.slug}
-                href={`/produto/${product.slug}`}
-                className="border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group bg-white"
-              >
-                <div className="flex items-center p-4 gap-4">
-                  <div className="relative w-28 h-28 flex-shrink-0 bg-[#f0f7f0] rounded-xl overflow-hidden">
-                    <Image
-                      src={assetPath(product.image)}
-                      alt={product.name}
-                      fill
-                      className="object-contain p-2"
-                    />
+              <p className="text-gray-500 mb-8">
+                A CAPOL é uma cooperativa agropecuária comprometida com o desenvolvimento rural, oferecendo os melhores produtos e serviços para o produtor.
+              </p>
+              <div className="space-y-6 mb-8">
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="font-semibold text-[#1a1a2e]">Qualidade dos Produtos</span>
+                    <span className="font-semibold text-[#1a1a2e]">100%</span>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#1a1a2e] mb-1">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-400 text-xs mb-3">
-                      {categories.find(c => c.slug === product.category)?.name || product.category}
-                    </p>
-                    <span className="inline-block border border-gray-300 rounded-full px-4 py-1 text-xs font-semibold text-gray-600 group-hover:border-[#2e7d32] group-hover:text-[#2e7d32] transition-colors">
-                      Ver Produto
-                    </span>
+                  <div className="w-full h-2 bg-gray-200 rounded-full">
+                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '100%' }} />
                   </div>
                 </div>
+                <div>
+                  <div className="flex justify-between mb-2">
+                    <span className="font-semibold text-[#1a1a2e]">Satisfação dos Cooperados</span>
+                    <span className="font-semibold text-[#1a1a2e]">100%</span>
+                  </div>
+                  <div className="w-full h-2 bg-gray-200 rounded-full">
+                    <div className="h-2 bg-[#ffc107] rounded-full" style={{ width: '100%' }} />
+                  </div>
+                </div>
+              </div>
+              <Link
+                href="/quem-somos"
+                className="inline-flex items-center border-2 border-[#ffc107] text-[#1a1a2e] font-semibold px-8 py-3 rounded-full hover:bg-[#ffc107] hover:text-white transition-colors"
+              >
+                Saiba Mais
               </Link>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/produtos"
-              className="inline-flex items-center bg-[#2e7d32] hover:bg-[#1b5e20] text-white font-bold px-8 py-3 rounded-full transition-colors text-sm uppercase tracking-wider"
-            >
-              Ver Todos os Produtos →
-            </Link>
+            </div>
           </div>
         </div>
       </section>
